@@ -1,0 +1,11 @@
+@Library("opstree-aws@master") _
+
+def terraformUtils = new org.opstree.terraformDeploy()
+
+ansiColor('xterm') {
+    properties ([
+        [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
+        disableConcurrentBuilds()
+    ])
+    terraformUtils.deployTerrafrom("production/components/admin/", "admin")
+}

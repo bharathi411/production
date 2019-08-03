@@ -1,0 +1,11 @@
+@Library("opstree-aws@master") _
+
+def terraformUtils = new org.opstree.terraformDestroy()
+
+ansiColor('xterm') {
+    properties ([
+        [$class: 'RebuildSettings', autoRebuild: false, rebuildDisabled: false],
+        disableConcurrentBuilds()
+    ])
+    terraformUtils.destroyTerrafrom("production/components/sso/", "sso")
+}
